@@ -1,0 +1,23 @@
+- name: Install apache2 web server
+  become: true
+  apt: pkg={{ item }} state=installed update_cache=true
+  with_items:
+  - apache2
+
+- name: start services
+  service: name={{ item }} state=started enabled=yes
+  sudo: yes
+  with_items:
+    - apache2
+    
+- name: deploy index.html
+  sudo: yes
+  copy:
+    src: files/index.html
+    dest: /var/www/html/index.html
+        
+- name: deploy env.txt
+  sudo: yes
+  template:
+    src: files/env.txt
+    dest: /var/www/html/env.txt 

@@ -1,0 +1,8 @@
+prod_env
+
+[db_servers]
+db ansible_host=3.139.71.35 ansible_ssh_private_key_file=/home/ansible/KPair.pem
+
+[web_servers]
+web ansible_host=3.138.195.241 ansible_ssh_private_key_file=/home/ansible/KPair.pem
+
